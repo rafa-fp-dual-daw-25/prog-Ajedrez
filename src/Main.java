@@ -31,13 +31,23 @@ public class Main {
     public static int[][] movimientoAlfil(int fila, int columna) {
         int[][] tablero = new int[8][8];
 
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                if (fila )
+        int[][] movimientos = {
+                {-1, 1},
+                {-1, -1},
+                {1, -1},
+                {1, 1}
+        };
+
+        for (int[] movimiento : movimientos) {
+            int nuevaFila = fila + movimiento[0];
+            int nuevaColumna = columna + movimiento[1];
+
+            while ((nuevaFila >= 0 && nuevaFila < 8) && (nuevaColumna >= 0 && nuevaColumna < 8)) {
+                tablero[nuevaFila][nuevaColumna] = 1;
+                nuevaFila += movimiento[0];
+                nuevaColumna += movimiento[1];
             }
-
         }
-
         return tablero;
     }
 
@@ -55,6 +65,6 @@ public class Main {
                 tablero[fila][j] = 1;
             }
         }
-            return tablero;
+        return tablero;
     }
 }
